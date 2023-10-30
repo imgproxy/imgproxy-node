@@ -1,0 +1,42 @@
+{
+  "name": "@imgproxy/imgproxy-node",
+  "version": "1.0.0",
+  "main": "./dist/imgproxy-node.cjs",
+  "module": "./dist/imgproxy-node.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/imgproxy-node.cjs",
+      "import": "./dist/imgproxy-node.mjs"
+    }
+  },
+  "license": "MIT",
+  "types": "./dist/imgproxy-node.d.ts",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "rimraf dist && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
+    "test": "vitest",
+    "check-types": "tsc --noEmit",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier . --write",
+    "prepare": "husky install && husky set .husky/pre-commit 'npx lint-staged' && git add .husky/pre-commit"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.1",
+    "@types/node": "^20.4.9",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "@vitest/coverage-v8": "^0.34.1",
+    "dts-bundle-generator": "^8.0.1",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.1"
+  }
+}

@@ -1,0 +1,16 @@
+.github
+.husky
+coverage
+src
+node_modules
+src
+tests
+.eslintignore
+.eslintrc
+.gitignore
+.lintstagedrc
+.prettierignore
+.prettierrc
+dts-bundle-generator.config.ts
+tsconfig.json
+vite.config.ts
