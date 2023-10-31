@@ -19,6 +19,5 @@ imgproxy can be used to provide a fast and secure way to _get rid of all the ima
 ## Install
 
 ```bash
-npm install imgproxy-node
+npm install @imgproxy/imgproxy-node
 ```
-
