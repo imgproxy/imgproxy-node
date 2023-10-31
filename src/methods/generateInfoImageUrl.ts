@@ -1,6 +1,6 @@
 import { generateImageInfoUrl as generateImageInfoUrlCore } from "@imgproxy/imgproxy-js-core";
-import { OptionsImageInfo } from "@imgproxy/imgproxy-js-core";
-import getSignatureUrl from "../utils/getSignatureUrl";
+import type { OptionsImageInfo } from "@imgproxy/imgproxy-js-core";
+import getSignedUrl from "../utils/getSignedUrl";
 
 interface IGenerateImageInfoUrl {
   baseUrl: string;
@@ -22,7 +22,7 @@ const generateImageInfoUrl = ({
 }: IGenerateImageInfoUrl): string => {
   let dublicatedBaseUrl = baseUrl;
   const optionsString = generateImageInfoUrlCore(URL, options);
-  const signatureUrl = getSignatureUrl(optionsString.suffix, salt, key);
+  const signatureUrl = getSignedUrl(optionsString.suffix, salt, key);
 
   if (baseUrl.endsWith("/")) {
     dublicatedBaseUrl = baseUrl.slice(0, -1);

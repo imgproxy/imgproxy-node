@@ -13,9 +13,9 @@ const sign = (salt: string, target: string, secret: string): string => {
   return hmac.digest("base64url");
 };
 
-const getSignatureUrl = (path: string, salt?: string, key?: string): string => {
-  let argSalt: string | string[] | undefined = salt || SALT;
-  let argKey: string | string[] | undefined = key || KEY;
+const getSignedUrl = (path: string, salt?: string, key?: string): string => {
+  let argSalt: string | undefined = salt || SALT;
+  let argKey: string | undefined = key || KEY;
 
   if (!argSalt) {
     throw new Error(
@@ -39,18 +39,12 @@ const getSignatureUrl = (path: string, salt?: string, key?: string): string => {
   }
 
   if (argSalt.includes(",") && argKey.includes(",")) {
-    argSalt = argSalt.split(",");
-    argKey = argKey.split(",");
+    argSalt = argSalt.split(",")[0];
+    argKey = argKey.split(",")[0];
   }
 
-  if (Array.isArray(argSalt) && Array.isArray(argKey)) {
-    const signature = sign(argSalt[0], path, argKey[0]);
-
-    return `/${signature}${path}`;
-  }
-
-  const signature = sign(argSalt as string, path, argKey as string);
+  const signature = sign(argSalt, path, argKey);
   return `/${signature}${path}`;
 };
 
-export default getSignatureUrl;
+export default getSignedUrl;

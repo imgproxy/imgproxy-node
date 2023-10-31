@@ -1,10 +1,10 @@
 import { generateUrl } from "@imgproxy/imgproxy-js-core";
-import { Options } from "@imgproxy/imgproxy-js-core";
-import getSignatureUrl from "../utils/getSignatureUrl";
+import type { Options } from "@imgproxy/imgproxy-js-core";
+import getSignedUrl from "../utils/getSignedUrl";
 
-interface GenerateImageUrlOptions {
+interface IGenerateImageUrl {
   baseUrl: string;
-  URL: {
+  url: {
     value: string;
     type: "plain" | "base64" | "encoded";
   };
@@ -15,20 +15,20 @@ interface GenerateImageUrlOptions {
 
 const generateImageUrl = ({
   baseUrl,
-  URL,
+  url,
   options,
   salt,
   key,
-}: GenerateImageUrlOptions): string => {
+}: IGenerateImageUrl): string => {
   let dublicatedBaseUrl = baseUrl;
-  const optionsString = generateUrl(URL, options);
-  const signatureUrl = getSignatureUrl(optionsString, salt, key);
+  const optionsString = generateUrl(url, options);
+  const signedUrl = getSignedUrl(optionsString, salt, key);
 
   if (baseUrl.endsWith("/")) {
     dublicatedBaseUrl = baseUrl.slice(0, -1);
   }
 
-  return `${dublicatedBaseUrl}${signatureUrl}`;
+  return `${dublicatedBaseUrl}${signedUrl}`;
 };
 
 export default generateImageUrl;
