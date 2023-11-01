@@ -4,8 +4,10 @@ import getEncryptedUrl from "./getEncryptedUrl";
 
 describe("getEncryptedUrl", () => {
   it("should return a valid encrypted URL", () => {
-    const mock = vi.fn().mockImplementation(crypto.randomBytes);
-    mock.mockImplementationOnce(() => "b1 a0 e2 f2 b4 8b 32 c2");
+    const spy = vi.spyOn(crypto, "randomBytes");
+    spy.mockImplementationOnce(() =>
+      Buffer.from("e664535f505d3b6ae939fe1169b22e2d", "hex")
+    );
 
     const result = getEncryptedUrl(
       "https://example.com/image.jpg",
@@ -16,7 +18,7 @@ describe("getEncryptedUrl", () => {
     );
 
     expect(result).toBe(
-      "cIitazvm9Xb6PCng4ZqG-s98wATciZ58YpADKTPpxK7XWKnnMDSoYrcwx7lk7vGu"
+      "5mRTX1BdO2rpOf4RabIuLRo5XHgNeEqAfturvYUVzVXfh75f8b5ulIvbh2JawTzP"
     );
   });
 });
