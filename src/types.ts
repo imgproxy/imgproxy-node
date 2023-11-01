@@ -22,9 +22,9 @@ interface BaseGenerateImageUrl {
 }
 
 export interface IGenerateImageInfoUrl extends BaseGenerateImageUrl {
-  options: OptionsImageInfo;
+  options?: OptionsImageInfo;
 }
 
 export interface IGenerateImageUrl extends BaseGenerateImageUrl {
-  options: Options;
+  options?: Options;
 }

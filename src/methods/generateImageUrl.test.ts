@@ -21,10 +21,9 @@ describe("generateImageUrl", () => {
       key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
     });
 
-    const expectedUrl =
-      "https://imgproxy.example.com/lGUqI4JvQjcBfombObcTQVe5wwsQtatggfrRKvi_pXg/el:t/f:png/g:no/h:300/rt:fit/w:300/plain/https://example.com/image.jpg";
-
-    expect(result).toBe(expectedUrl);
+    expect(result).toBe(
+      "https://imgproxy.example.com/lGUqI4JvQjcBfombObcTQVe5wwsQtatggfrRKvi_pXg/el:t/f:png/g:no/h:300/rt:fit/w:300/plain/https://example.com/image.jpg"
+    );
   });
 
   it("should generate a valid URL withouth salt and key", () => {
@@ -44,9 +43,21 @@ describe("generateImageUrl", () => {
       options,
     });
 
-    const expectedUrl =
-      "https://imgproxy.example.com/insecure/ar:t/cb:clear/ex:t/f:webp/g:noea:10:10/sa:10/w:300/plain/https://example.com/image.jpg";
+    expect(result).toBe(
+      "https://imgproxy.example.com/insecure/ar:t/cb:clear/ex:t/f:webp/g:noea:10:10/sa:10/w:300/plain/https://example.com/image.jpg"
+    );
+  });
 
-    expect(result).toBe(expectedUrl);
+  it("should generate a valid URL withouth options", () => {
+    const result = generateImageUrl({
+      baseUrl: "https://imgproxy.example.com/",
+      url: { value: "https://example.com/image.jpg", type: "plain" },
+      salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
+      key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
+    });
+
+    expect(result).toBe(
+      "https://imgproxy.example.com/hK0tNIxx4voPkymNzQE4TOdLZewysuQll19fP9lbIj0/plain/https://example.com/image.jpg"
+    );
   });
 });
