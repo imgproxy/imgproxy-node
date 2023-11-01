@@ -60,4 +60,39 @@ describe("generateImageUrl", () => {
       "https://imgproxy.example.com/hK0tNIxx4voPkymNzQE4TOdLZewysuQll19fP9lbIj0/plain/https://example.com/image.jpg"
     );
   });
+
+  it("should generate a valid encoded URL with encryption", () => {
+    const options: Options = {
+      resizing_type: "fit",
+      width: 300,
+      gravity: { type: "no" },
+      enlarge: 1,
+    };
+
+    const result = generateImageUrl({
+      baseUrl: "https://imgproxy.example.com/",
+      url: { value: "https://example.com/image.jpg", type: "plain" },
+      options,
+      salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
+      key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
+      encryptKey:
+        "52dd01d54fcbd79ff247fcff1d2f200ce6b95546f960b084faa1d269fb95d600",
+    });
+
+    expect(result).toContain("/enc/");
+  });
+
+  it("shouldn't encrypt URL if noEncription is true", () => {
+    const result = generateImageUrl({
+      baseUrl: "https://imgproxy.example.com/",
+      url: { value: "https://example.com/image.jpg", type: "plain" },
+      salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
+      key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
+      encryptKey:
+        "52dd01d54fcbd79ff247fcff1d2f200ce6b95546f960b084faa1d269fb95d600",
+      noEncription: true,
+    });
+
+    expect(result).toContain("/plain/");
+  });
 });

@@ -19,6 +19,8 @@ interface BaseGenerateImageUrl {
   url: URL;
   salt?: string;
   key?: string;
+  encryptKey?: string;
+  noEncription?: boolean;
 }
 
 export interface IGenerateImageInfoUrl extends BaseGenerateImageUrl {

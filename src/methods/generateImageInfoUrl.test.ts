@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import generateInfoImageUrl from "./generateInfoImageUrl";
+import generateImageInfoUrl from "./generateImageInfoUrl";
 import { OptionsImageInfo } from "@imgproxy/imgproxy-js-core";
 
-describe("generateInfoImageUrl", () => {
+describe("generateImageInfourl", () => {
   it("should generate a valid URL", () => {
     const options: OptionsImageInfo = {
       average: { average: 1, ignore_transparent: "f" },
@@ -12,7 +12,7 @@ describe("generateInfoImageUrl", () => {
       palette: 6,
     };
 
-    const result = generateInfoImageUrl({
+    const result = generateImageInfoUrl({
       baseUrl: "https://imgproxy.example.com/",
       url: {
         value:
@@ -37,7 +37,7 @@ describe("generateInfoImageUrl", () => {
       xmp: false,
     };
 
-    const result = generateInfoImageUrl({
+    const result = generateImageInfoUrl({
       baseUrl: "https://imgproxy.example.com/",
       url: { value: "https://example.com/image.jpg", type: "plain" },
       options,
@@ -49,7 +49,7 @@ describe("generateInfoImageUrl", () => {
   });
 
   it("should generate a valid URL withouth options", () => {
-    const result = generateInfoImageUrl({
+    const result = generateImageInfoUrl({
       baseUrl: "https://imgproxy.example.com/",
       url: { value: "https://example.com/image.jpg", type: "plain" },
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
