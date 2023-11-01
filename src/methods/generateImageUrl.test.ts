@@ -26,4 +26,27 @@ describe("generateImageUrl", () => {
 
     expect(result).toBe(expectedUrl);
   });
+
+  it("should generate a valid URL withouth salt and key", () => {
+    const options: Options = {
+      saturation: 10,
+      auto_rotate: true,
+      cachebuster: "clear",
+      width: 300,
+      gravity: { type: "noea", x_offset: 10, y_offset: 10 },
+      extend: { extend: 1 },
+      format: "webp",
+    };
+
+    const result = generateImageUrl({
+      baseUrl: "https://imgproxy.example.com/",
+      url: { value: "https://example.com/image.jpg", type: "plain" },
+      options,
+    });
+
+    const expectedUrl =
+      "https://imgproxy.example.com/insecure/ar:t/cb:clear/ex:t/f:webp/g:noea:10:10/sa:10/w:300/plain/https://example.com/image.jpg";
+
+    expect(result).toBe(expectedUrl);
+  });
 });

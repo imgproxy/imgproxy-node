@@ -1,33 +1,28 @@
 import { generateImageInfoUrl as generateImageInfoUrlCore } from "@imgproxy/imgproxy-js-core";
-import type { OptionsImageInfo } from "@imgproxy/imgproxy-js-core";
 import getSignedUrl from "../utils/getSignedUrl";
-
-interface IGenerateImageInfoUrl {
-  baseUrl: string;
-  URL: {
-    value: string;
-    type: "plain" | "base64" | "encoded";
-  };
-  options: OptionsImageInfo;
-  salt?: string;
-  key?: string;
-}
+import getSignPair from "../utils/getSignPair";
+import type { IGenerateImageInfoUrl } from "../types";
 
 const generateImageInfoUrl = ({
   baseUrl,
-  URL,
+  url,
   options,
   salt,
   key,
 }: IGenerateImageInfoUrl): string => {
   let dublicatedBaseUrl = baseUrl;
-  const optionsString = generateImageInfoUrlCore(URL, options);
-  const signatureUrl = getSignedUrl(optionsString.suffix, salt, key);
+  const signPair = getSignPair({ salt, key });
+  const optionsString = generateImageInfoUrlCore(url, options);
 
   if (baseUrl.endsWith("/")) {
     dublicatedBaseUrl = baseUrl.slice(0, -1);
   }
 
+  if (!signPair) {
+    return `${dublicatedBaseUrl}${optionsString.prefix}/insecure${optionsString.suffix}`;
+  }
+
+  const signatureUrl = getSignedUrl(optionsString.suffix, signPair);
   return `${dublicatedBaseUrl}${optionsString.prefix}${signatureUrl}`;
 };
 

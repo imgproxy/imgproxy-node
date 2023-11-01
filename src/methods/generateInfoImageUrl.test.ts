@@ -14,7 +14,7 @@ describe("generateInfoImageUrl", () => {
 
     const result = generateInfoImageUrl({
       baseUrl: "https://imgproxy.example.com/",
-      URL: {
+      url: {
         value:
           "hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz",
         type: "encoded",
@@ -26,6 +26,26 @@ describe("generateInfoImageUrl", () => {
 
     const expectedUrl =
       "https://imgproxy.example.com/info/LC2MsT-Va0MQfUmVCbyP3Fp8sQX98gu3ADtXVfW3lgU/avg:t:f/do:t/dc:t:t/iptc:t/p:6/enc/hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz";
+
+    expect(result).toBe(expectedUrl);
+  });
+
+  it("should generate a valid URL withouth salt and key", () => {
+    const options: OptionsImageInfo = {
+      format: 1,
+      blurhash: { x_components: 4, y_components: 3 },
+      dimensions: false,
+      xmp: false,
+    };
+
+    const result = generateInfoImageUrl({
+      baseUrl: "https://imgproxy.example.com/",
+      url: { value: "https://example.com/image.jpg", type: "plain" },
+      options,
+    });
+
+    const expectedUrl =
+      "https://imgproxy.example.com/info/insecure/bh:4:3/d:f/f:t/xmp:f/plain/https://example.com/image.jpg";
 
     expect(result).toBe(expectedUrl);
   });
