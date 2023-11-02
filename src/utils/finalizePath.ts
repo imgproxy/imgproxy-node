@@ -9,7 +9,9 @@ interface IFinalizePath {
 
 const finalizePath = ({ options, salt, key }: IFinalizePath): string => {
   const signPair = getSignPair({ salt, key });
-  return signPair ? getSignedUrl(options, signPair) : `/insecure${options}`;
+  return signPair
+    ? `${getSignedUrl(options, signPair)}`
+    : `/insecure${options}`;
 };
 
 export default finalizePath;
