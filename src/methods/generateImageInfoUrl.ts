@@ -1,8 +1,9 @@
-import { generateImageInfoUrl as generateImageInfoUrlCore } from "@imgproxy/imgproxy-js-core";
-import getSignedUrl from "../utils/getSignedUrl";
-import getSignPair from "../utils/getSignPair";
-import getEncryptKey from "../utils/getEncryptKey";
-import getEncryptedUrl from "../utils/getEncryptedUrl";
+import {
+  generateImageInfoUrl as generateImageInfoUrlCore,
+  INFO_PREFIX,
+} from "@imgproxy/imgproxy-js-core";
+import normalizeUrl from "../utils/normalizeUrl";
+import finalizePath from "../utils/finalizePath";
 import type { IGenerateImageInfoUrl } from "../types";
 
 /**
@@ -46,33 +47,20 @@ const generateImageInfoUrl = ({
   encryptKey,
   noEncription,
 }: IGenerateImageInfoUrl): string => {
-  let baseUrl = paramsBaseUrl;
-  const signPair = getSignPair({ salt, key });
-
-  //encrypting url
-  const encKey = getEncryptKey(encryptKey);
-  const changedUrl = { ...url };
-
-  if (encKey && url.type === "plain" && !noEncription) {
-    const encUrlValue = getEncryptedUrl(url.value, encKey);
-    changedUrl.value = encUrlValue;
-    changedUrl.type = "encoded";
-  }
+  const changedUrl = normalizeUrl({ url, encryptKey, noEncription });
 
   //generating url with options
-  const optionsString = generateImageInfoUrlCore(url, options);
+  const optionsString = generateImageInfoUrlCore(changedUrl, options);
 
-  if (baseUrl.endsWith("/")) {
-    baseUrl = baseUrl.slice(0, -1);
-  }
+  //changing base url
+  const baseUrl = paramsBaseUrl.endsWith("/")
+    ? paramsBaseUrl.slice(0, -1)
+    : paramsBaseUrl;
 
   //adding base url and signature if it exists
-  if (!signPair) {
-    return `${baseUrl}${optionsString.prefix}/insecure${optionsString.suffix}`;
-  }
+  const path = finalizePath({ options: optionsString, salt, key });
 
-  const signatureUrl = getSignedUrl(optionsString.suffix, signPair);
-  return `${baseUrl}${optionsString.prefix}${signatureUrl}`;
+  return `${baseUrl}${INFO_PREFIX}${path}`;
 };
 
 export default generateImageInfoUrl;

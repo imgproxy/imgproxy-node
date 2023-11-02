@@ -40,6 +40,6 @@
     "vitest": "^0.34.1"
   },
   "dependencies": {
-    "@imgproxy/imgproxy-js-core": "^1.0.0"
+    "@imgproxy/imgproxy-js-core": "^1.0.3"
   }
 }
