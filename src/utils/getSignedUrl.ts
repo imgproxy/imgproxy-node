@@ -1,5 +1,6 @@
 import { createHmac } from "crypto";
 import type { IPair } from "../types";
+import withCache from "./withCache";
 
 const hexDecode = (hex: string): Buffer => Buffer.from(hex, "hex");
 
@@ -16,4 +17,7 @@ const getSignedUrl = (path: string, pair: IPair): string => {
   return `/${signature}${path}`;
 };
 
-export default getSignedUrl;
+const withCacheGetSignedUrl = withCache(getSignedUrl);
+
+export default withCacheGetSignedUrl;
+export { getSignedUrl };

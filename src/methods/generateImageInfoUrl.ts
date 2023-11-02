@@ -38,7 +38,7 @@ import type { IGenerateImageInfoUrl } from "../types";
  * });
  */
 const generateImageInfoUrl = ({
-  baseUrl,
+  baseUrl: paramsBaseUrl,
   url,
   options,
   salt,
@@ -46,7 +46,7 @@ const generateImageInfoUrl = ({
   encryptKey,
   noEncription,
 }: IGenerateImageInfoUrl): string => {
-  let dublicatedBaseUrl = baseUrl;
+  let baseUrl = paramsBaseUrl;
   const signPair = getSignPair({ salt, key });
 
   //encrypting url
@@ -63,16 +63,16 @@ const generateImageInfoUrl = ({
   const optionsString = generateImageInfoUrlCore(url, options);
 
   if (baseUrl.endsWith("/")) {
-    dublicatedBaseUrl = baseUrl.slice(0, -1);
+    baseUrl = baseUrl.slice(0, -1);
   }
 
   //adding base url and signature if it exists
   if (!signPair) {
-    return `${dublicatedBaseUrl}${optionsString.prefix}/insecure${optionsString.suffix}`;
+    return `${baseUrl}${optionsString.prefix}/insecure${optionsString.suffix}`;
   }
 
   const signatureUrl = getSignedUrl(optionsString.suffix, signPair);
-  return `${dublicatedBaseUrl}${optionsString.prefix}${signatureUrl}`;
+  return `${baseUrl}${optionsString.prefix}${signatureUrl}`;
 };
 
 export default generateImageInfoUrl;

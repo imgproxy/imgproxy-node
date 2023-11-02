@@ -4,7 +4,7 @@ import type {
   URL,
 } from "@imgproxy/imgproxy-js-core";
 
-export interface IUnknownPair {
+export interface IMaybePair {
   salt: string | undefined;
   key: string | undefined;
 }

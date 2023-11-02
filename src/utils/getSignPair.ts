@@ -1,17 +1,24 @@
-import type { IPair, IUnknownPair } from "../types";
+import type { IPair, IMaybePair } from "../types";
 
 const SALT = process.env.IMGPROXY_SALT;
 const KEY = process.env.IMGPROXY_KEY;
 
-const getSignedPair = (pair: IUnknownPair): IPair | undefined => {
-  const salt = pair.salt || SALT;
-  const key = pair.key || KEY;
+type MaybePair = [string | undefined, string | undefined];
 
-  if (!salt || !key) {
-    return undefined;
+const isPair = (arr: MaybePair): arr is [string, string] => arr.every(Boolean);
+
+const getSignedPair = (pair: IMaybePair): IPair | undefined => {
+  let wipPair: MaybePair = [pair.key, pair.salt];
+
+  if (!isPair(wipPair)) {
+    wipPair = [KEY, SALT];
+    if (!isPair(wipPair)) return undefined;
   }
 
-  return { salt: salt.split(",")[0].trim(), key: key.split(",")[0].trim() };
+  return {
+    salt: wipPair[1].split(",")[0].trim(),
+    key: wipPair[0].split(",")[0].trim(),
+  };
 };
 
 export default getSignedPair;

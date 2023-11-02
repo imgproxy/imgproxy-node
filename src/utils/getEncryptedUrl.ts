@@ -1,10 +1,11 @@
 import crypto from "crypto";
+import withCache from "./withCache";
 
-const getEncryptedUrl = (url: string, key: Buffer): string => {
+const getEncryptedUrl = (url: string, key: string): string => {
+  const bufferKey = Buffer.from(key, "hex");
   const data = Buffer.from(url).toString("binary");
   const iv = crypto.randomBytes(16);
-  console.log("iv", iv);
-  const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
+  const cipher = crypto.createCipheriv("aes-256-cbc", bufferKey, iv);
 
   const encrypted = Buffer.from(
     cipher.update(data, "utf8", "binary") + cipher.final("binary"),
@@ -18,4 +19,7 @@ const getEncryptedUrl = (url: string, key: Buffer): string => {
     .replace(/\//g, "_");
 };
 
-export default getEncryptedUrl;
+const withCacheGetEncryptedUrl = withCache(getEncryptedUrl);
+
+export default withCacheGetEncryptedUrl;
+export { getEncryptedUrl };

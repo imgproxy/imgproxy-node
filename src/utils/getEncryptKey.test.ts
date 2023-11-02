@@ -8,11 +8,11 @@ describe("getEncryptKey", () => {
     expect(result).toBe(undefined);
   });
 
-  it("should return Buffer if key is defined", () => {
+  it("should return String if key is defined", () => {
     const result = getEncryptKey(
       "1eb5b0e971ad7f45324c1bb15c947cb207c43152fa5c6c7f35c4f36e0c18e0f1"
     );
 
-    expect(result).toBeInstanceOf(Buffer);
+    expect(result).toBeInstanceOf(String);
   });
 });
