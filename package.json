@@ -19,7 +19,8 @@
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext .ts",
     "format": "prettier . --write",
-    "prepare": "husky install && husky set .husky/pre-commit 'npx lint-staged' && git add .husky/pre-commit"
+    "prepare": "husky install && husky set .husky/pre-commit 'npx lint-staged' && git add .husky/pre-commit",
+    "publish-patch": "npm version patch && git push && npm run build && npm publish --access public"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.1",

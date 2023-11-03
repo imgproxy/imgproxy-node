@@ -1,8 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const packageJson = require("./package.json");
-
 const getPackageName = () => {
-  return packageJson.name;
+  return "imgproxy-node";
 };
 
 const config = {
