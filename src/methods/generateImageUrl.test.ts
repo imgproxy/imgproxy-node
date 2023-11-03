@@ -14,19 +14,19 @@ describe("generateImageUrl", () => {
     };
 
     const result = generateImageUrl({
-      baseUrl: "https://imgproxy.example.com/",
-      url: { value: "https://example.com/image.jpg", type: "plain" },
+      baseUrl: "https://imgproxy.example.com",
+      url: { value: "https://example.com/image.jpg", resultType: "base64" },
       options,
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
       key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/lGUqI4JvQjcBfombObcTQVe5wwsQtatggfrRKvi_pXg/el:t/f:png/g:no/h:300/rt:fit/w:300/plain/https://example.com/image.jpg"
+      "https://imgproxy.example.com/OISSn9zHS-E-xpsQPcsvKaTLVJePQgHG3MvDBbvk5lU/el:t/f:png/g:no/h:300/rt:fit/w:300/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
     );
   });
 
-  it("should generate a valid URL withouth salt and key", () => {
+  it("should generate a valid base64 when url in string type URL withouth salt and key", () => {
     const options: Options = {
       saturation: 10,
       auto_rotate: true,
@@ -39,25 +39,25 @@ describe("generateImageUrl", () => {
 
     const result = generateImageUrl({
       baseUrl: "https://imgproxy.example.com/",
-      url: { value: "https://example.com/image.jpg", type: "plain" },
+      url: "https://example.com/image.jpg",
       options,
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/insecure/ar:t/cb:clear/ex:t/f:webp/g:noea:10:10/sa:10/w:300/plain/https://example.com/image.jpg"
+      "https://imgproxy.example.com/insecure/ar:t/cb:clear/ex:t/f:webp/g:noea:10:10/sa:10/w:300/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
     );
   });
 
   it("should generate a valid URL withouth options", () => {
     const result = generateImageUrl({
       baseUrl: "https://imgproxy.example.com/",
-      url: { value: "https://example.com/image.jpg", type: "plain" },
+      url: { value: "https://example.com/image.jpg" },
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
       key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/hK0tNIxx4voPkymNzQE4TOdLZewysuQll19fP9lbIj0/plain/https://example.com/image.jpg"
+      "https://imgproxy.example.com/S27LCUL9UqVzUUEh4PuP2fMuoszQetA6qj5T07tlmZ4/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
     );
   });
 
@@ -71,7 +71,7 @@ describe("generateImageUrl", () => {
 
     const result = generateImageUrl({
       baseUrl: "https://imgproxy.example.com/",
-      url: { value: "https://example.com/image.jpg", type: "plain" },
+      url: { value: "https://example.com/image.jpg", resultType: "encoded" },
       options,
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
       key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
@@ -85,7 +85,7 @@ describe("generateImageUrl", () => {
   it("shouldn't encrypt URL if noEncription is true", () => {
     const result = generateImageUrl({
       baseUrl: "https://imgproxy.example.com/",
-      url: { value: "https://example.com/image.jpg", type: "plain" },
+      url: { value: "https://example.com/image.jpg", resultType: "plain" },
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
       key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
       encryptKey:

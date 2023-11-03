@@ -1,8 +1,4 @@
-import type {
-  Options,
-  OptionsImageInfo,
-  URL,
-} from "@imgproxy/imgproxy-js-core";
+import type { Options, OptionsImageInfo } from "@imgproxy/imgproxy-js-core";
 
 export interface IMaybePair {
   salt: string | undefined;
@@ -14,9 +10,14 @@ export interface IPair {
   key: string;
 }
 
+export interface IRawUrl {
+  value: string;
+  resultType?: "plain" | "base64" | "encoded";
+}
+
 interface BaseGenerateImageUrl {
   baseUrl: string;
-  url: URL;
+  url: string | IRawUrl;
   salt?: string;
   key?: string;
   encryptKey?: string;

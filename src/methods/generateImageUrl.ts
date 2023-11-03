@@ -6,9 +6,10 @@ import type { IGenerateImageUrl } from "../types";
 /**
  * Generate image url
  * @param {string} baseUrl - Base url
- * @param {Object} url - url and type
+ * @param {Object | string} url - you should specify only url if you agree with default url.resultType = "base64" or you should specify url.value and url.resultType
  * @param {string} url.value - url value
- * @param {string} url.type - url type ("plain", "base64" or "encoded")
+ * @param {string} url.resultType - (optional) here you specify in what type of image URL is required in the generated
+ * Imgproxy request URL: "plain", "base64" or "encoded" (encoded is PRO feature). We strongly recommend to use "base64" or "encoded" kind of url. default: "base64"
  * @param {Object} [options] - (optional) options. You can see all options in [imgproxy docs](https://docs.imgproxy.net/generating_the_url?id=processing-options)
  * or in Options types in imgproxy-js-core.d.ts
  * @param {string} [salt] - (optional) hex-encoded salt. This option overrides IMGPROXY_SALT from process.env for this request
@@ -23,7 +24,7 @@ import type { IGenerateImageUrl } from "../types";
  * @example
  * const url = generateImageUrl({
  *   baseUrl: "https://imgproxy.example",
- *   url: { value: "hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz", type: "encoded"},
+ *   url: "https://example.com/image.jpg",
  *   options: {
  *     resize: { width: 100, height: 100, type: "fill", enlarge: 1, extend: { extend: 1 } },
  *     rotate: 90,
