@@ -1,10 +1,10 @@
 import crypto from "crypto";
-import type { IPair } from "../types";
+import type { ISignPair } from "../types";
 import withCache from "./withCache.js";
 
 const hexDecode = (hex: string): Buffer => Buffer.from(hex, "hex");
 
-const sign = (target: string, signPair: IPair): string => {
+const sign = (target: string, signPair: ISignPair): string => {
   const hmac = crypto.createHmac("sha256", hexDecode(signPair.key));
   hmac.update(hexDecode(signPair.salt));
   hmac.update(target);
@@ -12,7 +12,7 @@ const sign = (target: string, signPair: IPair): string => {
   return hmac.digest("base64url");
 };
 
-const getSignedUrl = (path: string, pair: IPair): string => {
+const getSignedUrl = (path: string, pair: ISignPair): string => {
   const signature = sign(path, pair);
   return `/${signature}${path}`;
 };

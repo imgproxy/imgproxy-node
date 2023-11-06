@@ -1,4 +1,4 @@
-import type { IPair, IMaybePair } from "../types";
+import type { ISignPair, IMaybeSignPair } from "../types";
 
 const SALT = process.env.IMGPROXY_SALT;
 const KEY = process.env.IMGPROXY_KEY;
@@ -7,7 +7,7 @@ type MaybePair = [string | undefined, string | undefined];
 
 const isPair = (arr: MaybePair): arr is [string, string] => arr.every(Boolean);
 
-const getSignedPair = (pair: IMaybePair): IPair | undefined => {
+const getSignedPair = (pair: IMaybeSignPair): ISignPair | undefined => {
   let wipPair: MaybePair = [pair.key, pair.salt];
 
   if (!isPair(wipPair)) {

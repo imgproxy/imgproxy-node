@@ -1,10 +1,10 @@
-import { IPair } from "../types";
+import { ISignPair, ICryptPair } from "../types";
 
-type Cred = string | IPair;
+type Cred = ISignPair | ICryptPair;
 
 const getKey = (url: string, cred: Cred): string => {
-  if (typeof cred === "string") {
-    return `${url}${cred}`;
+  if ("iv" in cred) {
+    return `${url}${cred.key}${cred.iv}`;
   }
 
   return `${url}${cred.key}${cred.salt}`;
@@ -13,7 +13,7 @@ const getKey = (url: string, cred: Cred): string => {
 function withCache<T extends Cred>(fn: (url: string, cred: T) => string) {
   const cache = new Map();
 
-  return (url: string, cred: T) => {
+  return (url: string, cred: T): string => {
     const key = getKey(url, cred);
 
     if (cache.has(key)) {

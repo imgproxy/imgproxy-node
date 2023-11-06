@@ -25,17 +25,6 @@ describe("normalizeUrl", () => {
     expect(result.type).toBe("encrypted");
   });
 
-  it("should return a url type without changes if encryptKey and noEcroption are provided", () => {
-    const result = normalizeUrl({
-      url: { value: "https://example.com/image.jpg", resultType: "plain" },
-      encryptKey:
-        "52dd01d54fcbd79ff247fcff1d2f200ce6b95546f960b084faa1d269fb95d600",
-      noEncription: true,
-    });
-
-    expect(result.type).toBe("plain");
-  });
-
   it("should return a url type is 'base64' if url is string", () => {
     const result = normalizeUrl({
       url: "https://example.com/image.jpg",

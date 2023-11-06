@@ -1,19 +1,15 @@
 import type { URL } from "@imgproxy/imgproxy-js-core";
 import type { IRawUrl } from "../types";
-import getEncryptKey from "./getEncryptKey.js";
+import getEncryptPair from "./getEncryptPair.js";
 import getEncryptedUrl from "./getEncryptedUrl.js";
 
 interface INormalizeUrl {
   url: string | IRawUrl;
   encryptKey?: string;
-  noEncription?: boolean;
+  encryptIV?: string;
 }
 
-const normalizeUrl = ({
-  url,
-  encryptKey,
-  noEncription,
-}: INormalizeUrl): URL => {
+const normalizeUrl = ({ url, encryptKey, encryptIV }: INormalizeUrl): URL => {
   const changedUrl = {
     value: typeof url === "string" ? url : url.value,
     type: (typeof url === "string" ? "base64" : url.resultType) || "base64",
@@ -25,14 +21,14 @@ const normalizeUrl = ({
   }
 
   //encrypting url
-  if (changedUrl.type === "encrypted" && !noEncription) {
+  if (changedUrl.type === "encrypted") {
     if (!encryptKey) {
       throw new Error(
         "You should provide encryptKey if you want to use encrypted url type"
       );
     }
 
-    const encKey = getEncryptKey(encryptKey);
+    const encKey = getEncryptPair(encryptKey, encryptIV);
 
     if (encKey) {
       changedUrl.value = getEncryptedUrl(changedUrl.value, encKey);

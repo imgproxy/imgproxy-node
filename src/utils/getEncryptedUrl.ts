@@ -1,10 +1,11 @@
 import crypto from "crypto";
+import { ICryptPair } from "../types.js";
 import withCache from "./withCache.js";
 
-const getEncryptedUrl = (url: string, key: string): string => {
-  const bufferKey = Buffer.from(key, "hex");
+const getEncryptedUrl = (url: string, pair: ICryptPair): string => {
+  const bufferKey = Buffer.from(pair.key, "hex");
+  const iv = Buffer.from(pair.iv, "hex");
   const data = Buffer.from(url).toString("binary");
-  const iv = crypto.randomBytes(16);
   const cipher = crypto.createCipheriv("aes-256-cbc", bufferKey, iv);
 
   const encrypted = Buffer.from(

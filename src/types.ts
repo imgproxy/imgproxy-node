@@ -4,14 +4,19 @@ import type {
   URL,
 } from "@imgproxy/imgproxy-js-core";
 
-export interface IMaybePair {
+export interface IMaybeSignPair {
   salt: string | undefined;
   key: string | undefined;
 }
 
-export interface IPair {
+export interface ISignPair {
   salt: string;
   key: string;
+}
+
+export interface ICryptPair {
+  key: string;
+  iv: string;
 }
 
 export interface IRawUrl {
@@ -25,7 +30,7 @@ interface BaseGenerateImageUrl {
   salt?: string;
   key?: string;
   encryptKey?: string;
-  noEncription?: boolean;
+  encryptIV?: string;
 }
 
 export interface IGenerateImageInfoUrl extends BaseGenerateImageUrl {

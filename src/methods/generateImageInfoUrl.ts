@@ -19,8 +19,8 @@ import type { IGenerateImageInfoUrl } from "../types";
  * @param {string} [key] - (optional) hex-encoded key. This option overrides IMGPROXY_KEY from process.env for this request
  * @param {string} [encryptKey] - (optional, PRO feature) hex-encoded key for encrypting url. Actual only for plain url type.
  * This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY from process.env for this request
- * @param {boolean} [noEncription=false] - (optional, PRO feature) actual only for plain url type. If true, url will not be encrypted.
- * We strongly recommend to use encryption for url. default: `false`
+ ** @param {string} [encryptIV] - (optional, PRO feature) hex-encoded 16-bytes length IV for encrypting url.
+ * More details about IV you can read in [imgproxy docs](https://docs.imgproxy.net/usage/encrypting_source_url#iv-generation)
  *
  * @returns {string}
  *
@@ -46,9 +46,9 @@ const generateImageInfoUrl = ({
   salt,
   key,
   encryptKey,
-  noEncription,
+  encryptIV,
 }: IGenerateImageInfoUrl): string => {
-  const changedUrl = normalizeUrl({ url, encryptKey, noEncription });
+  const changedUrl = normalizeUrl({ url, encryptKey, encryptIV });
 
   //generating url with options
   const optionsString = generateImageInfoUrlCore(changedUrl, options);

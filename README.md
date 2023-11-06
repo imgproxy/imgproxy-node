@@ -64,7 +64,6 @@ It takes the following arguments:
 - `salt` (`string | undefined`) - (optional) the salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT environment variable from process.env for this call.
 - `key` (`string | undefined`) - (optional) the key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY environment variable from process.env for this call.
 - `encryptKey` (`string | undefined`) - (optional, **PRO feature**) the key used to encrypt the URL. The key should be either 16, 24, or 32 bytes long for AES-128-CBC, AES-192-CBC, or AES-256-CBC, respectively. This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY environment variable from process.env for this call. Actual only for plain url type.
-- `noEncription` (`boolean`) - (optional, **PRO feature**, default `false`) if true, the URL will not be encrypted. Actual only for plain url type. We strongly recommend to use encryption for url.
 
 ### generateImageInfoUrl
 
@@ -83,4 +82,3 @@ It takes the following arguments:
 - `salt` (`string | undefined`) - (optional) the salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT from process.env for one request.
 - `key` (`string | undefined`) - (optional) the key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY from process.env for one request.
 - `encryptKey` (`string | undefined`) - (optional, **PRO feature**) the key used to encrypt the URL. The key should be either 16, 24, or 32 bytes long for AES-128-CBC, AES-192-CBC, or AES-256-CBC, respectively. This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY from process.env for one request. Actual only for plain url type.
-- `noEncription` (`boolean`) - (optional, **PRO feature**, default `false`) if true, the URL will not be encrypted. Actual only for plain url type. We strongly recommend to use encryption for url.
