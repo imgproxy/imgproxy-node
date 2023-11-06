@@ -55,11 +55,11 @@ It takes the following arguments:
 - `baseUrl` (`string`) - (required) the base URL of your imgproxy instance
 - `url` (`Object | string`) - (required) a string with url value or an object that contains the value and resultType properties. You can specify only url if you agree with default `url.resultType` = "base64" or you have to specify `url.value` and `url.resultType`.
   - `value` (`string`) - (required) the plain text URL of the image.
-  - `resultType` (`"base64" | "encoded" | "plain"`) - (optional) the type of the URL. Deafult value is `"base64"`.
+  - `resultType` (`"base64" | "encrypted" | "plain"`) - (optional) the type of the URL. Deafult value is `"base64"`.
     Can be one of the following:
     - `"base64"` - a base64 encoded URL. Default value.
-    - `"encoded"` - (**PRO feature**) an AES-CBC encrypted URL.
-    - `"plain"` - a plain text URL. We strongly recommend using `base64` or `encoded` type.
+    - `"encrypted"` - (**PRO feature**) an AES-CBC encrypted URL.
+    - `"plain"` - a plain text URL. We strongly recommend using `base64` or `encrypted` type.
 - `options` (`Object | undefined`) - (optional) an object that contains the resizing options. You can see all options in [imgproxy docs](https://docs.imgproxy.net/generating_the_url?id=processing-options) or in [Options types in imgproxy-js-core library](https://github.com/imgproxy/imgproxy-js-core/blob/main/src/types/index.ts).
 - `salt` (`string | undefined`) - (optional) the salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT environment variable from process.env for this call.
 - `key` (`string | undefined`) - (optional) the key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY environment variable from process.env for this call.
@@ -74,11 +74,11 @@ It takes the following arguments:
 - `baseUrl` (`string`) - (required) the base URL of your imgproxy instance
 - `url` (`Object | string`) - (required) a string with url value or an object that contains the value and resultType properties. You can specify only url if you agree with default `url.resultType` = "base64" or you will have to specify `url.value` and `url.resultType`.
   - `value` (`string`) - (required) the plain text URL of the image.
-  - `resultType` (`"base64" | "encoded" | "plain"`) - (optional) the type of the URL. Deafult value is `"base64"`.
+  - `resultType` (`"base64" | "encrypted" | "plain"`) - (optional) the type of the URL. Deafult value is `"base64"`.
     Can be one of the following:
     - `"base64"` - a base64 encoded URL. Default value.
-    - `"encoded"` - (**PRO feature**) an AES-CBC encrypted URL.
-    - `"plain"` - a plain text URL. We strongly recommend using `base64` or `encoded` type.
+    - `"encrypted"` - (**PRO feature**) an AES-CBC encrypted URL.
+    - `"plain"` - a plain text URL. We strongly recommend using `base64` or `encrypted` type.
 - `options` (`Object | undefined`) - (optional) an object that contains the resizing options. You can see all options in [imgproxy docs](https://docs.imgproxy.net/getting_the_image_info?id=info-options) or in [OptionsImageInfo types in imgproxy-js-core library](https://github.com/imgproxy/imgproxy-js-core/blob/main/src/types/index.ts).
 - `salt` (`string | undefined`) - (optional) the salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT from process.env for one request.
 - `key` (`string | undefined`) - (optional) the key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY from process.env for one request.

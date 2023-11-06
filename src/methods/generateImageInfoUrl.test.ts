@@ -16,7 +16,7 @@ describe("generateImageInfourl", () => {
       baseUrl: "https://imgproxy.example.com/",
       url: {
         value: "https://example.com/image.jpg",
-        resultType: "encoded",
+        resultType: "encrypted",
       },
       options,
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",

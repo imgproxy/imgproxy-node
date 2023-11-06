@@ -61,7 +61,7 @@ describe("generateImageUrl", () => {
     );
   });
 
-  it("should generate a valid encoded URL with encryption", () => {
+  it("should generate a valid encrypted URL with encryption", () => {
     const options: Options = {
       resizing_type: "fit",
       width: 300,
@@ -71,7 +71,7 @@ describe("generateImageUrl", () => {
 
     const result = generateImageUrl({
       baseUrl: "https://imgproxy.example.com/",
-      url: { value: "https://example.com/image.jpg", resultType: "encoded" },
+      url: { value: "https://example.com/image.jpg", resultType: "encrypted" },
       options,
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
       key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",

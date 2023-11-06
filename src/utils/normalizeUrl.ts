@@ -25,10 +25,10 @@ const normalizeUrl = ({
   }
 
   //encrypting url
-  if (changedUrl.type === "encoded" && !noEncription) {
+  if (changedUrl.type === "encrypted" && !noEncription) {
     if (!encryptKey) {
       throw new Error(
-        "You should provide encryptKey if you want to use encoded url type"
+        "You should provide encryptKey if you want to use encrypted url type"
       );
     }
 
@@ -36,7 +36,7 @@ const normalizeUrl = ({
 
     if (encKey) {
       changedUrl.value = getEncryptedUrl(changedUrl.value, encKey);
-      changedUrl.type = "encoded";
+      changedUrl.type = "encrypted";
     }
   }
 

@@ -9,9 +9,10 @@ import type { IGenerateImageInfoUrl } from "../types";
 /**
  * Generate image info url. **PRO feature**
  * @param {string} baseUrl - Base url
- * @param {Object} url - url and type
+ * @param {Object | string} url - you can specify only url if you agree with default url.resultType = "base64" or you have to specify url.value and url.resultType
  * @param {string} url.value - url value
- * @param {string} url.type - url type (plain, base64 or encoded)
+ * @param {string} url.resultType - (optional) here you specify in what type of image URL is required in the generated.
+ * Imgproxy request URL: "plain", "base64" or "encrypted" (encrypted is PRO feature). We strongly recommend to use "base64" or "encrypted" kind of url. default: `"base64"`.
  * @param {Object} [options] - (optional) options. You can see all options in [imgproxy docs](https://docs.imgproxy.net/getting_the_image_info?id=info-options)
  * or in OptionsImageInfo types in imgproxy-js-core.d.ts
  * @param {string} [salt] - (optional) hex-encoded salt. This option overrides IMGPROXY_SALT from process.env for this request
@@ -26,7 +27,7 @@ import type { IGenerateImageInfoUrl } from "../types";
  * @example
  * const url = generateImageInfoUrl({
  *  baseUrl: "https://imgproxy.example",
- *  url: { value: "hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz", type: "encoded"},
+ *  url: "https://example.com/image.jpg",
  *  options: {
  *    average: { average: 1, ignore_transparent: "f" },
  *    detect_objects: true,
