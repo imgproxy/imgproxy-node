@@ -3,19 +3,18 @@
     "rootDir": "./src",
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "ESNext",
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
+    "outDir": "./dist",
     "strict": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client", "node"]
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["**/*.test.ts", "node_modules", "tests/**", ".history/**"]

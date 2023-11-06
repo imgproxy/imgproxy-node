@@ -1,5 +1,5 @@
-import getSignedUrl from "../utils/getSignedUrl";
-import getSignPair from "../utils/getSignPair";
+import getSignedUrl from "../utils/getSignedUrl.js";
+import getSignPair from "../utils/getSignPair.js";
 
 interface IFinalizePath {
   options: string;

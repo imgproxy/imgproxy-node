@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import type { IPair } from "../types";
-import withCache from "./withCache";
+import withCache from "./withCache.js";
 
 const hexDecode = (hex: string): Buffer => Buffer.from(hex, "hex");
 

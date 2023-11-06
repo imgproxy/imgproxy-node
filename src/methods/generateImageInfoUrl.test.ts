@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import generateImageInfoUrl from "./generateImageInfoUrl";
 import { OptionsImageInfo } from "@imgproxy/imgproxy-js-core";
+import generateImageInfoUrl from "./generateImageInfoUrl";
 
 describe("generateImageInfourl", () => {
   it("should generate a valid URL", () => {

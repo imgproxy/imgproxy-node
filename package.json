@@ -1,19 +1,20 @@
 {
   "name": "@imgproxy/imgproxy-node",
   "version": "1.0.0",
-  "main": "./dist/imgproxy-node.cjs",
-  "module": "./dist/imgproxy-node.mjs",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "exports": {
     ".": {
-      "require": "./dist/imgproxy-node.cjs",
-      "import": "./dist/imgproxy-node.mjs"
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
     }
   },
   "license": "MIT",
   "types": "./dist/imgproxy-node.d.ts",
   "scripts": {
-    "dev": "vite --host",
-    "build": "rimraf dist && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
+    "compile": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
+    "make-module": "echo '{\"type\": \"module\"}' > ./dist/esm/package.json",
+    "build": "rimraf dist && npm run compile && npm run make-module && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
     "test": "vitest",
     "check-types": "tsc --noEmit",
     "test:coverage": "vitest --coverage",
@@ -37,7 +38,6 @@
     "prettier": "^3.0.1",
     "rimraf": "^5.0.1",
     "typescript": "^5.1.6",
-    "vite": "^4.4.9",
     "vitest": "^0.34.1"
   },
   "dependencies": {

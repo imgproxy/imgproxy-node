@@ -1,6 +1,6 @@
 import { generateUrl } from "@imgproxy/imgproxy-js-core";
-import normalizeUrl from "../utils/normalizeUrl";
-import finalizePath from "../utils/finalizePath";
+import normalizeUrl from "../utils/normalizeUrl.js";
+import finalizePath from "../utils/finalizePath.js";
 import type { IGenerateImageUrl } from "../types";
 
 /**

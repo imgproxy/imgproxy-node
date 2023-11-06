@@ -1,7 +1,7 @@
 import type { URL } from "@imgproxy/imgproxy-js-core";
 import type { IRawUrl } from "../types";
-import getEncryptKey from "./getEncryptKey";
-import getEncryptedUrl from "./getEncryptedUrl";
+import getEncryptKey from "./getEncryptKey.js";
+import getEncryptedUrl from "./getEncryptedUrl.js";
 
 interface INormalizeUrl {
   url: string | IRawUrl;

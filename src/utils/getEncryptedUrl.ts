@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import withCache from "./withCache";
+import withCache from "./withCache.js";
 
 const getEncryptedUrl = (url: string, key: string): string => {
   const bufferKey = Buffer.from(key, "hex");
