@@ -1,10 +1,10 @@
 .github
 .husky
+assets
 coverage
 src
 node_modules
 src
-tests
 .eslintignore
 .eslintrc
 .gitignore
@@ -13,4 +13,6 @@ tests
 .prettierrc
 dts-bundle-generator.config.ts
 tsconfig.json
+tsconfig.cjs.json
+tsconfig.esm.json
 vite.config.ts
