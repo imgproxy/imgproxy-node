@@ -30,7 +30,7 @@ npm install @imgproxy/imgproxy-node
 import { generateImageUrl } from '@imgproxy/imgproxy-node';
 
 const url = generateImageUrl(
-  baseUrl: "https://imgproxy.example.com/",
+  endpoint: "https://imgproxy.example.com/",
   url: "https://example.com/image.jpg",
   options: {
     resizing_type: "fit",
@@ -50,35 +50,35 @@ const url = generateImageUrl(
 This method generates an imgproxy URL.
 It takes the following arguments:
 
-- `baseUrl` (`string`) - (required) the base URL of your imgproxy instance
-- `url` (`Object | string`) - (required) a string with url value or an object that contains the value and resultType properties. You can specify only url if you agree with default `url.resultType` = "base64" or you have to specify `url.value` and `url.resultType`.
+- `endpoint` (`string`) - (required) the base URL of your imgproxy instance
+- `url` (`Object | string`) - (required) a string with url value or an object that contains the value and displayAs properties. You can specify only url if you agree with default `url.displayAs` = "base64" or you have to specify `url.value` and `url.displayAs`.
   - `value` (`string`) - (required) the plain text URL of the image.
-  - `resultType` (`"base64" | "encrypted" | "plain"`) - (optional) the final type of URL you will receive . Deafult value is `"base64"`.
+  - `displayAs` (`"base64" | "encrypted" | "plain"`) - (optional) how the image URL should be presented in the resulting imgproxy request URL. Deafult value is `"base64"`.
     Can be one of the following:
     - `"base64"` - a base64 encoded URL. Default value.
     - `"encrypted"` - (**PRO feature**) an AES-CBC encrypted URL.
     - `"plain"` - a plain text URL. We strongly recommend using `base64` or `encrypted` type.
 - `options` (`Object | undefined`) - (optional) an object that contains the resizing options. You can see all options in [imgproxy docs](https://docs.imgproxy.net/generating_the_url?id=processing-options) or in [Options types in imgproxy-js-core library](https://github.com/imgproxy/imgproxy-js-core/blob/main/src/types/index.ts).
-- `salt` (`string | undefined`) - (optional) the salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT environment variable from process.env for this call.
-- `key` (`string | undefined`) - (optional) the key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY environment variable from process.env for this call.
-- `encryptKey` (`string | undefined`) - (optional, **PRO feature**) the key used to encrypt the URL. The key should be either 16, 24, or 32 bytes long for AES-128-CBC, AES-192-CBC, or AES-256-CBC, respectively. This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY environment variable from process.env for this call.
-- `encryptIV` (`string | undefined`) - (optional, **PRO feature**) the IV used to encrypt the URL. The IV should be 16 bytes long. If not specified, the IV will be generated randomly. But we strongly recommend to specify it.
+- `salt` (`string | undefined`) - (optional) hex-encoded salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT environment variable from process.env for this call.
+- `key` (`string | undefined`) - (optional) hex-encoded key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY environment variable from process.env for this call.
+- `encryptKey` (`string | undefined`) - (optional, **PRO feature**) hex-encoded key used to encrypt the URL. The key should be either 16, 24, or 32 bytes long for AES-128-CBC, AES-192-CBC, or AES-256-CBC, respectively. This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY environment variable from process.env for this call.
+- `encryptIV` (`string | undefined`) - (optional, **PRO feature**) hex-encoded 16-bytes length IV for encrypting url. If not specified, the IV will be generated randomly. But it's better if you specify it yourself. Read more in [imgproxy docs iv-generation](https://docs.imgproxy.net/usage/encrypting_source_url#iv-generation).
 
 ### generateImageInfoUrl
 
 This method generates an imgproxy URL to get a source image info.
 It takes the following arguments:
 
-- `baseUrl` (`string`) - (required) the base URL of your imgproxy instance
-- `url` (`Object | string`) - (required) a string with url value or an object that contains the value and resultType properties. You can specify only url if you agree with default `url.resultType` = "base64" or you will have to specify `url.value` and `url.resultType`.
+- `endpoint` (`string`) - (required) the base URL of your imgproxy instance
+- `url` (`Object | string`) - (required) a string with url value or an object that contains the value and displayAs properties. You can specify only url if you agree with default `url.displayAs` = "base64" or you will have to specify `url.value` and `url.displayAs`.
   - `value` (`string`) - (required) the plain text URL of the image.
-  - `resultType` (`"base64" | "encrypted" | "plain"`) - (optional) the final type of URL you will receive. Deafult value is `"base64"`.
+  - `displayAs` (`"base64" | "encrypted" | "plain"`) - (optional) how the image URL should be presented in the resulting imgproxy request URL. Deafult value is `"base64"`.
     Can be one of the following:
     - `"base64"` - a base64 encoded URL. Default value.
     - `"encrypted"` - (**PRO feature**) an AES-CBC encrypted URL.
     - `"plain"` - a plain text URL. We strongly recommend using `base64` or `encrypted` type.
 - `options` (`Object | undefined`) - (optional) an object that contains the resizing options. You can see all options in [imgproxy docs](https://docs.imgproxy.net/getting_the_image_info?id=info-options) or in [OptionsImageInfo types in imgproxy-js-core library](https://github.com/imgproxy/imgproxy-js-core/blob/main/src/types/index.ts).
-- `salt` (`string | undefined`) - (optional) the salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT from process.env for one request.
-- `key` (`string | undefined`) - (optional) the key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY from process.env for one request.
-- `encryptKey` (`string | undefined`) - (optional, **PRO feature**) the key used to encrypt the URL. The key should be either 16, 24, or 32 bytes long for AES-128-CBC, AES-192-CBC, or AES-256-CBC, respectively. This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY from process.env for one request.
-- `encryptIV` (`string | undefined`) - (optional, **PRO feature**) the IV used to encrypt the URL. The IV should be 16 bytes long. If not specified, the IV will be generated randomly. But we strongly recommend to specify it.
+- `salt` (`string | undefined`) - (optional) hex-encoded salt used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_SALT from process.env for one request.
+- `key` (`string | undefined`) - (optional) hex-encoded key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY from process.env for one request.
+- `encryptKey` (`string | undefined`) - (optional, **PRO feature**) hex-encoded key used to encrypt the URL. The key should be either 16, 24, or 32 bytes long for AES-128-CBC, AES-192-CBC, or AES-256-CBC, respectively. This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY from process.env for one request.
+- `encryptIV` (`string | undefined`) - (optional, **PRO feature**) hex-encoded 16-bytes length IV for encrypting url. If not specified, the IV will be generated randomly. But it's better if you specify it yourself. Read more in [imgproxy docs iv-generation](https://docs.imgproxy.net/usage/encrypting_source_url#iv-generation).

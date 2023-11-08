@@ -12,7 +12,7 @@ interface INormalizeUrl {
 const normalizeUrl = ({ url, encryptKey, encryptIV }: INormalizeUrl): URL => {
   const changedUrl = {
     value: typeof url === "string" ? url : url.value,
-    type: (typeof url === "string" ? "base64" : url.resultType) || "base64",
+    type: (typeof url === "string" ? "base64" : url.displayAs) || "base64",
   };
 
   //encoded url to base64

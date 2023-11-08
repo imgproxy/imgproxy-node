@@ -2,12 +2,12 @@ import { describe, expect, it } from "vitest";
 import normalizeUrl from "./normalizeUrl";
 
 describe("normalizeUrl", () => {
-  it("should return a throw error if resultType is 'encrypted' and encryptKey is not provided", () => {
+  it("should return a throw error if displayAs is 'encrypted' and encryptKey is not provided", () => {
     expect(() =>
       normalizeUrl({
         url: {
           value: "https://example.com/image.jpg",
-          resultType: "encrypted",
+          displayAs: "encrypted",
         },
       })
     ).toThrowError(
@@ -17,7 +17,7 @@ describe("normalizeUrl", () => {
 
   it("should return a changed url type if encryptKey is provided", () => {
     const result = normalizeUrl({
-      url: { value: "https://example.com/image.jpg", resultType: "encrypted" },
+      url: { value: "https://example.com/image.jpg", displayAs: "encrypted" },
       encryptKey:
         "52dd01d54fcbd79ff247fcff1d2f200ce6b95546f960b084faa1d269fb95d600",
     });
@@ -35,7 +35,7 @@ describe("normalizeUrl", () => {
     expect(result.type).toBe("base64");
   });
 
-  it("should return a url type is 'base64' if url is object without url.resultType", () => {
+  it("should return a url type is 'base64' if url is object without url.displayAs", () => {
     const result = normalizeUrl({
       url: {
         value: "https://example.com/image.jpg",
@@ -45,11 +45,11 @@ describe("normalizeUrl", () => {
     expect(result.type).toBe("base64");
   });
 
-  it("should return a url type is 'plain' if url is object with url.resultType === 'plain'", () => {
+  it("should return a url type is 'plain' if url is object with url.displayAs === 'plain'", () => {
     const result = normalizeUrl({
       url: {
         value: "https://example.com/image.jpg",
-        resultType: "plain",
+        displayAs: "plain",
       },
     });
 

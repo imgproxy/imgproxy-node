@@ -13,10 +13,10 @@ describe("generateImageInfourl", () => {
     };
 
     const result = generateImageInfoUrl({
-      baseUrl: "https://imgproxy.example.com/",
+      endpoint: "https://imgproxy.example.com/",
       url: {
         value: "https://example.com/image.jpg",
-        resultType: "encrypted",
+        displayAs: "encrypted",
       },
       options,
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
@@ -37,7 +37,7 @@ describe("generateImageInfourl", () => {
     };
 
     const result = generateImageInfoUrl({
-      baseUrl: "https://imgproxy.example.com",
+      endpoint: "https://imgproxy.example.com",
       url: { value: "https://example.com/image.jpg" },
       options,
     });
@@ -49,7 +49,7 @@ describe("generateImageInfourl", () => {
 
   it("should generate a valid encoded URL withouth options", () => {
     const result = generateImageInfoUrl({
-      baseUrl: "https://imgproxy.example.com/",
+      endpoint: "https://imgproxy.example.com/",
       url: "https://example.com/image.jpg",
       salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
       key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
@@ -69,8 +69,8 @@ describe("generateImageInfourl", () => {
     };
 
     const result = generateImageInfoUrl({
-      baseUrl: "https://imgproxy.example.com/",
-      url: { value: "https://example.com/image.jpg", resultType: "plain" },
+      endpoint: "https://imgproxy.example.com/",
+      url: { value: "https://example.com/image.jpg", displayAs: "plain" },
       options,
     });
 

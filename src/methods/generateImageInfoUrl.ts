@@ -8,10 +8,10 @@ import type { IGenerateImageInfoUrl } from "../types";
 
 /**
  * Generate image info url. **PRO feature**
- * @param {string} baseUrl - Base url
- * @param {Object | string} url - you can specify only url if you agree with default url.resultType = "base64" or you have to specify url.value and url.resultType
+ * @param {string} endpoint - Base url
+ * @param {Object | string} url - you can specify only url if you agree with default url.displayAs = "base64" or you have to specify url.value and url.displayAs
  * @param {string} url.value - url value
- * @param {string} url.resultType - (optional) here you specify in what type of image URL is required in the generated.
+ * @param {string} url.displayAs - (optional) here you specify in what type of image URL is required in the generated.
  * Imgproxy request URL: "plain", "base64" or "encrypted" (encrypted is PRO feature). We strongly recommend to use "base64" or "encrypted" kind of url. default: `"base64"`.
  * @param {Object} [options] - (optional) options. You can see all options in [imgproxy docs](https://docs.imgproxy.net/getting_the_image_info?id=info-options)
  * or in OptionsImageInfo types in imgproxy-js-core.d.ts
@@ -26,7 +26,7 @@ import type { IGenerateImageInfoUrl } from "../types";
  *
  * @example
  * const url = generateImageInfoUrl({
- *  baseUrl: "https://imgproxy.example",
+ *  endpoint: "https://imgproxy.example",
  *  url: "https://example.com/image.jpg",
  *  options: {
  *    average: { average: 1, ignore_transparent: "f" },
@@ -40,7 +40,7 @@ import type { IGenerateImageInfoUrl } from "../types";
  * });
  */
 const generateImageInfoUrl = ({
-  baseUrl: paramsBaseUrl,
+  endpoint: paramsEndpoint,
   url,
   options,
   salt,
@@ -54,14 +54,14 @@ const generateImageInfoUrl = ({
   const optionsString = generateImageInfoUrlCore(changedUrl, options);
 
   //changing base url
-  const baseUrl = paramsBaseUrl.endsWith("/")
-    ? paramsBaseUrl.slice(0, -1)
-    : paramsBaseUrl;
+  const endpoint = paramsEndpoint.endsWith("/")
+    ? paramsEndpoint.slice(0, -1)
+    : paramsEndpoint;
 
   //adding base url and signature if it exists
   const path = finalizePath({ options: optionsString, salt, key });
 
-  return `${baseUrl}${INFO_PREFIX}${path}`;
+  return `${endpoint}${INFO_PREFIX}${path}`;
 };
 
 export default generateImageInfoUrl;

@@ -21,11 +21,11 @@ export interface ICryptPair {
 
 export interface IRawUrl {
   value: string;
-  resultType?: URL["type"];
+  displayAs?: URL["type"];
 }
 
 interface BaseGenerateImageUrl {
-  baseUrl: string;
+  endpoint: string;
   url: string | IRawUrl;
   salt?: string;
   key?: string;
