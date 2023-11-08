@@ -15,4 +15,3 @@ dts-bundle-generator.config.ts
 tsconfig.json
 tsconfig.cjs.json
 tsconfig.esm.json
-vite.config.ts
