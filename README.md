@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://imgproxy.net">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/nodejs-dark.svg?sanitize=true">
-      <source media="(prefers-color-scheme: light)" srcset="./assets/nodejs-light.svg?sanitize=true">
-      <img width="150" alt="imgproxy-nodejs logo" src="./assets/nodejs-light.svg?sanitize=true">
+      <source media="(prefers-color-scheme: dark)" srcset="assets/nodejs-dark.svg?sanitize=true">
+      <source media="(prefers-color-scheme: light)" srcset="assets/nodejs-light.svg?sanitize=true">
+      <img width="150" alt="imgproxy-nodejs logo" src="assets/nodejs-light.svg?sanitize=true">
     </picture>
   </a>
 </p>

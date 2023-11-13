@@ -1,6 +1,23 @@
 {
   "name": "@imgproxy/imgproxy-node",
   "version": "1.0.0",
+  "description": "Official node url-builder lib for imgproxy - fast and secure standalone server for resizing and converting remote images",
+  "keywords": [
+    "imgproxy",
+    "node",
+    "url-builder",
+    "image optimization",
+    "image processing",
+    "typescript"
+  ],
+  "homepage": "https://imgproxy.net/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imgproxy/imgproxy-node"
+  },
+  "bugs": {
+    "url": "https://github.com/imgproxy/imgproxy-node/issues"
+  },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "exports": {
