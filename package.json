@@ -1,6 +1,6 @@
 {
   "name": "@imgproxy/imgproxy-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official node url-builder lib for imgproxy - fast and secure standalone server for resizing and converting remote images",
   "keywords": [
     "imgproxy",
