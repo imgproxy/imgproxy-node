@@ -9,12 +9,13 @@
 </p>
 
 ---
+This library helps make image processing with imgproxy easier.
 
-**[imgproxy](https://github.com/imgproxy/imgproxy)** is a fast and secure standalone server for resizing and converting remote images. The main principles of imgproxy are simplicity, speed, and security. It is a Go application, ready to be installed and used in any Unix environment—also ready to be containerized using Docker.
+**[imgproxy](https://github.com/imgproxy/imgproxy)** is a fast and secure standalone server for resizing and converting remote images. The main principles of imgproxy are simplicity, speed, and security — it’s a Go application, ready to be installed and used in any Unix environment, and also ready to be containerized using Docker.
 
 imgproxy-node helps build your own image processing pipeline and create URLs for imgproxy requests. You no longer need to remember all the secret key names: the library will automatically use your ENV variables and provide a generated link to the processed image as output.
 
-Watch image processing on the fly with imgproxy-node in this [demo](https://react-server-components-demo.vercel.app/image/1?preset=format_webp).
+See image processing on the fly with imgproxy-node in this [demo](https://react-server-components-demo.vercel.app/image/1?preset=format_webp).
 
 
 - [Install](#install)
