@@ -3,9 +3,23 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/nodejs-dark.svg?sanitize=true">
       <source media="(prefers-color-scheme: light)" srcset="assets/nodejs-light.svg?sanitize=true">
-      <img width="150" alt="imgproxy-nodejs logo" src="assets/nodejs-light.svg?sanitize=true">
+      <img alt="imgproxy-nodejs logo" src="assets/nodejs-light.svg?sanitize=true">
     </picture>
   </a>
+</p>
+
+<h4 align="center">
+  <a href="https://imgproxy.net">Website</a> |
+  <a href="https://imgproxy.net/blog/">Blog</a> |
+  <a href="https://docs.imgproxy.net">Documentation</a> |
+  <a href="https://imgproxy.net/#pro">imgproxy Pro</a> |
+  <a href="https://hub.docker.com/r/darthsim/imgproxy/">Docker</a> |
+  <a href="https://twitter.com/imgproxy_net">Twitter</a> |
+  <a href="https://discord.gg/5GgpXgtC9u">Discord</a>
+</h4>
+
+<p align="center">
+<a href="https://github.com/imgproxy/imgproxy/actions"><img alt="GH Test" src="https://img.shields.io/github/actions/workflow/status/imgproxy/imgproxy-node/ci.yml?branch=main&label=CI&style=for-the-badge" /></a>
 </p>
 
 ---
@@ -17,6 +31,20 @@ imgproxy-node helps build your own image processing pipeline and create URLs for
 
 See image processing on the fly with imgproxy-node in this [demo](https://react-server-components-demo.vercel.app/image/1?preset=format_webp).
 
+<p><a href="https://evilmartians.com/?utm_source=imgproxy-node">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://evilmartians.com/badges/sponsored-by-evil-martians_v2.0_for-dark-bg@2x.png"
+    >
+    <img
+      src="https://evilmartians.com/badges/sponsored-by-evil-martians_v2.0@2x.png"
+      alt="Sponsored by Evil Martians"
+      width="236"
+      height="54"
+    >
+  </picture>
+</a></p>
 
 - [Install](#install)
 - [Usage](#usage)
