@@ -23,7 +23,8 @@
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
+      "import": "./dist/esm/index.js",
+      "types": "./dist/imgproxy-node.d.ts"
     }
   },
   "license": "MIT",
