@@ -23,6 +23,7 @@
 </p>
 
 ---
+
 This library helps make image processing with imgproxy easier.
 
 **[imgproxy](https://github.com/imgproxy/imgproxy)** is a fast and secure standalone server for resizing and converting remote images. The main principles of imgproxy are simplicity, speed, and security — it’s a Go application, ready to be installed and used in any Unix environment, and also ready to be containerized using Docker.
