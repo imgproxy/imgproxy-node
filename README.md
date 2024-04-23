@@ -62,7 +62,7 @@ npm install @imgproxy/imgproxy-node
 ```js
 import { generateImageUrl } from '@imgproxy/imgproxy-node';
 
-const url = generateImageUrl(
+const url = generateImageUrl({
   endpoint: "https://imgproxy.example.com/",
   url: "https://example.com/image.jpg",
   options: {
@@ -73,7 +73,7 @@ const url = generateImageUrl(
   },
   salt: "520f986b998545b4785e0defbc4f3c1203f22de2374a3d53cb7a7fe9fea309c5",
   key: "943b421c9eb07c830af81030552c86009268de4e532ba2ee2eab8247c6da0881",
-);
+});
 ```
 
 ## Methods
