@@ -1,5 +1,6 @@
 import type { URL } from "@imgproxy/imgproxy-js-core";
 import type { IRawUrl } from "../types";
+import bufferToBase64 from "./bufferToBase64.js";
 import getEncryptPair from "./getEncryptPair.js";
 import getEncryptedUrl from "./getEncryptedUrl.js";
 
@@ -17,7 +18,7 @@ const normalizeUrl = ({ url, encryptKey, encryptIV }: INormalizeUrl): URL => {
 
   //encoded url to base64
   if (changedUrl.type === "base64") {
-    changedUrl.value = btoa(changedUrl.value);
+    changedUrl.value = bufferToBase64(Buffer.from(changedUrl.value));
   }
 
   //encrypting url

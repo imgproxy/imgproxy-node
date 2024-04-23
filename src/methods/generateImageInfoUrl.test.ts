@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { OptionsImageInfo } from "@imgproxy/imgproxy-js-core";
 import generateImageInfoUrl from "./generateImageInfoUrl";
 
-describe("generateImageInfourl", () => {
+describe("generateImageInfoUrl", () => {
   it("should generate a valid URL", () => {
     const options: OptionsImageInfo = {
       average: { average: 1, ignore_transparent: "f" },
@@ -43,7 +43,7 @@ describe("generateImageInfourl", () => {
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/info/insecure/bh:4:3/d:f/f:t/xmp:f/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
+      "https://imgproxy.example.com/info/insecure/bh:4:3/d:f/f:t/xmp:f/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc"
     );
   });
 
@@ -56,7 +56,7 @@ describe("generateImageInfourl", () => {
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/info/S27LCUL9UqVzUUEh4PuP2fMuoszQetA6qj5T07tlmZ4/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
+      "https://imgproxy.example.com/info/xOner18d7-LJwkl4bifXGbC1_4kZXxsPLnuuvsMtcWo/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc"
     );
   });
 

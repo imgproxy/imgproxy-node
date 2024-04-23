@@ -22,7 +22,7 @@ describe("generateImageUrl", () => {
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/OISSn9zHS-E-xpsQPcsvKaTLVJePQgHG3MvDBbvk5lU/el:t/f:png/g:no/h:300/rt:fit/w:300/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
+      "https://imgproxy.example.com/zsdsCjFCqcAniKFCygMBToRh6l5jVZbL0bhrnnUGK58/el:t/f:png/g:no/h:300/rt:fit/w:300/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc"
     );
   });
 
@@ -44,7 +44,7 @@ describe("generateImageUrl", () => {
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/insecure/ar:t/cb:clear/ex:t/f:webp/g:noea:10:10/sa:10/w:300/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
+      "https://imgproxy.example.com/insecure/ar:t/cb:clear/ex:t/f:webp/g:noea:10:10/sa:10/w:300/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc"
     );
   });
 
@@ -57,7 +57,7 @@ describe("generateImageUrl", () => {
     });
 
     expect(result).toBe(
-      "https://imgproxy.example.com/S27LCUL9UqVzUUEh4PuP2fMuoszQetA6qj5T07tlmZ4/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc="
+      "https://imgproxy.example.com/xOner18d7-LJwkl4bifXGbC1_4kZXxsPLnuuvsMtcWo/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc"
     );
   });
 
