@@ -120,8 +120,7 @@ It takes the following arguments:
 # Development
 
 The project uses [changesets](https://github.com/changesets/changesets) to manage versioning and changelog.
-Typical workflow is as follow:
-
+Typical workflow is as follows:
 1. make changes to codebase,
 2. run `npm run changesets` at project root and follow prompt to generate a "changeset" (logging a change),
 3. commit both (1) and (2) into git.
