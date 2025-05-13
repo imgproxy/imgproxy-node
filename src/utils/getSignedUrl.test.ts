@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getSignedUrl } from "./getSignedUrl";
+import getSignedUrl from "./getSignedUrl";
 
 describe("getSignedUrl", () => {
   it("should return a signed url with options if salt and key are provided", () => {

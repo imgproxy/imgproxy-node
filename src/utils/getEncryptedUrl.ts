@@ -1,7 +1,6 @@
 import crypto from "crypto";
 import { ICryptPair } from "../types.js";
 import bufferToBase64 from "./bufferToBase64.js";
-import withCache from "./withCache.js";
 
 const getEncryptedUrl = (url: string, pair: ICryptPair): string => {
   const bufferKey = Buffer.from(pair.key, "hex");
@@ -17,7 +16,4 @@ const getEncryptedUrl = (url: string, pair: ICryptPair): string => {
   return bufferToBase64(Buffer.concat([iv, encrypted]));
 };
 
-const withCacheGetEncryptedUrl = withCache(getEncryptedUrl);
-
-export default withCacheGetEncryptedUrl;
-export { getEncryptedUrl };
+export default getEncryptedUrl;

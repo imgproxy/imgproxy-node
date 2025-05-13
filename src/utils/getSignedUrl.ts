@@ -1,6 +1,5 @@
 import crypto from "crypto";
 import type { ISignPair } from "../types";
-import withCache from "./withCache.js";
 
 const hexDecode = (hex: string): Buffer => Buffer.from(hex, "hex");
 
@@ -17,7 +16,4 @@ const getSignedUrl = (path: string, pair: ISignPair): string => {
   return `/${signature}${path}`;
 };
 
-const withCacheGetSignedUrl = withCache(getSignedUrl);
-
-export default withCacheGetSignedUrl;
-export { getSignedUrl };
+export default getSignedUrl;
