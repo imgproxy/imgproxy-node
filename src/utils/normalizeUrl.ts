@@ -1,4 +1,4 @@
-import type { URL } from "@imgproxy/imgproxy-js-core";
+import type { URLImageInfo } from "@imgproxy/imgproxy-js-core";
 import type { IRawUrl } from "../types";
 import bufferToBase64 from "./bufferToBase64.js";
 import getEncryptPair from "./getEncryptPair.js";
@@ -10,7 +10,11 @@ interface INormalizeUrl {
   encryptIV?: string;
 }
 
-const normalizeUrl = ({ url, encryptKey, encryptIV }: INormalizeUrl): URL => {
+const normalizeUrl = ({
+  url,
+  encryptKey,
+  encryptIV,
+}: INormalizeUrl): URLImageInfo => {
   const changedUrl = {
     value: typeof url === "string" ? url : url.value,
     type: (typeof url === "string" ? "base64" : url.displayAs) || "base64",

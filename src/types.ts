@@ -1,7 +1,7 @@
 import type {
   Options,
   OptionsImageInfo,
-  URL,
+  URLImageInfo,
 } from "@imgproxy/imgproxy-js-core";
 
 export interface IMaybeSignPair {
@@ -21,7 +21,7 @@ export interface ICryptPair {
 
 export interface IRawUrl {
   value: string;
-  displayAs?: URL["type"];
+  displayAs?: URLImageInfo["type"];
 }
 
 interface BaseGenerateImageUrl {
