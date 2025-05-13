@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getEncryptedUrl } from "./getEncryptedUrl";
+import getEncryptedUrl from "./getEncryptedUrl";
 
 describe("getEncryptedUrl", () => {
   it("should return a valid encrypted URL", () => {
