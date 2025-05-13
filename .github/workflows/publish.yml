@@ -1,0 +1,46 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CI: true
+jobs:
+  Version:
+    # prevents this action from running on forks
+    if: github.repository == 'imgproxy/imgproxy-node'
+    permissions:
+      contents: write # to create release (changesets/action)
+      pull-requests: write # to create pull request (changesets/action)
+      id-token: write #  OpenID Connect token needed for provenance
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: "Npm install"
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@v1
+        with:
+          version: npx @changesets/cli version
+          publish: npx @changesets/cli publish
+          commit: "Changesets versioning & publication"
+          title: "Changesets: Versioning & Publication"
+          createGithubReleases: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
