@@ -115,3 +115,14 @@ It takes the following arguments:
 - `key` (`string | undefined`) - (optional) hex-encoded key used to encode the URL. It must be a hex-encoded 16-byte string. This option overrides IMGPROXY_KEY from process.env for one request.
 - `encryptKey` (`string | undefined`) - (optional, **PRO feature**) hex-encoded key used to encrypt the URL. The key should be either 16, 24, or 32 bytes long for AES-128-CBC, AES-192-CBC, or AES-256-CBC, respectively. This option overrides IMGPROXY_SOURCE_URL_ENCRYPTION_KEY from process.env for one request.
 - `encryptIV` (`string | undefined`) - (optional, **PRO feature**) hex-encoded 16-bytes length IV for encrypting url. If not specified, the IV will be generated randomly. But it's better if you specify it yourself. Read more in [imgproxy docs iv-generation](https://docs.imgproxy.net/usage/encrypting_source_url#iv-generation).
+
+
+# Development
+
+The project uses [changesets](https://github.com/changesets/changesets) to manage versioning and changelog.
+Typical workflow is as follows:
+1. make changes to codebase,
+2. run `npm run changesets` at project root and follow prompt to generate a "changeset" (logging a change),
+3. commit both (1) and (2) into git.
+
+The [changesets Github action](./.github/workflows/publish.yml) is triggered on `push` to `main` and will create a corresponding "Changesets: Versioning & Publication" pull request, which, upon merged, will trigger publication of the new version to NPM.
