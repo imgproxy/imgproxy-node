@@ -28,7 +28,7 @@ describe("generateImageInfoUrl", () => {
     expect(result).toContain("/enc/");
   });
 
-  it("should generate a valid encoded URL withouth salt and key", () => {
+  it("should generate a valid encoded URL without salt and key", () => {
     const options: OptionsImageInfo = {
       format: 1,
       blurhash: { x_components: 4, y_components: 3 },
@@ -47,7 +47,7 @@ describe("generateImageInfoUrl", () => {
     );
   });
 
-  it("should generate a valid encoded URL withouth options", () => {
+  it("should generate a valid encoded URL without options", () => {
     const result = generateImageInfoUrl({
       endpoint: "https://imgproxy.example.com/",
       url: "https://example.com/image.jpg",

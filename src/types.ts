@@ -21,6 +21,7 @@ export interface ICryptPair {
 
 export interface IRawUrl {
   value: string;
+  filename?: string;
   displayAs?: URLImageInfo["type"];
 }
 

@@ -18,6 +18,7 @@ const normalizeUrl = ({
   const changedUrl = {
     value: typeof url === "string" ? url : url.value,
     type: (typeof url === "string" ? "base64" : url.displayAs) || "base64",
+    filename: typeof url === "string" ? undefined : url.filename,
   };
 
   //encoded url to base64
