@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
-      id-token: write #  OpenID Connect token needed for provenance
+      id-token: write # OIDC token for npm trusted publishing (and provenance)
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
@@ -22,9 +22,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          # trusted publishing requires npm >= 11.5.1 and node >= 22.14.0;
+          # node 24 ships npm 11.x, node 22 still ships npm 10.x
+          node-version: 24
           cache: "npm"
 
       - name: "Npm install"
@@ -43,4 +45,3 @@ jobs:
           createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
