@@ -55,4 +55,19 @@ describe("normalizeUrl", () => {
 
     expect(result.type).toBe("plain");
   });
+
+  it("should keep the filename attribute if url is an object with url.filename", () => {
+    expect(
+      normalizeUrl({
+        url: {
+          value: "https://example.com/image.jpg",
+          filename: "foo.jpg",
+        },
+      })
+    ).toStrictEqual({
+      filename: "foo.jpg",
+      type: "base64",
+      value: "aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc",
+    });
+  });
 });
